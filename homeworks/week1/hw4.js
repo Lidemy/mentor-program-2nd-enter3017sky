@@ -1,3 +1,14 @@
-function printFactor(n) {
+//hw4 印出因數
 
+function printFactor(n) {
+	for (var i = 1; i <= n; i++){
+		if (n % i === 0){
+			console.log(i)
+		}
+	}
 }
+
+
+printFactor(10)
+printFactor(7)
+
