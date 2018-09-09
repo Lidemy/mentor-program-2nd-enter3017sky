@@ -10,12 +10,12 @@
 
 
 function printStars(n) {
-	var result = '*'
-	if (1 <= n && n <= 30 ) {
-		for (i = 1; i <= n; i++) {
-			console.log(result)
-		}
-	}
+  var result = '*'
+        if (1 <= n && n <= 30 ) {
+    for (i = 1; i <= n; i++) {
+        console.log(result)
+    }
+}
 }
 
 // printStars(1)

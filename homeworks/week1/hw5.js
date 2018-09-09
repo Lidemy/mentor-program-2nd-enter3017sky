@@ -16,16 +16,18 @@ repeat('a', 5) => aaaaa
 repeat('yoyo', 2) => yoyoyoyo
 */
 
-function join(str, concatStr) {
-	result = []
-	for (var i = 0; i < str.length; i++) {
-		result.push(str)
-		return result.join('!')
-	}
+function join (str, concatStr) {
+  result = []
+  for (var i = 0; i < str.length; i++) {
+    result.Ａrray([])
+  }
 }
 
-console.log(join([1, 2, 3],'123'))
+function concatStr () {
 
+}
+
+console.log(join([1, 2, 3], '!'))
 
 // 解答二
 
