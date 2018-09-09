@@ -20,7 +20,7 @@ function join(str, concatStr) {
 	result = []
 	for (var i = 0; i < str.length; i++) {
 		result.push(str)
-		return result.join()
+		return result.join('!')
 	}
 }
 
