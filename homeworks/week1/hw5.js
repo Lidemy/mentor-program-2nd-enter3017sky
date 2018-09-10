@@ -16,26 +16,41 @@ repeat('a', 5) => aaaaa
 repeat('yoyo', 2) => yoyoyoyo
 */
 
-function join (str, concatStr) {
-  result = []
-  for (var i = 0; i < str.length; i++) {
-    result.Ａrray([])
-  }
-}
-
-function concatStr () {
-
-}
-
-console.log(join([1, 2, 3], '!'))
-
-// 解答二
-
-// function repeat(str, times) {
-// 	result = ''
-// 	for (var i = 0; i < times; i++) {
-// 		result += str
-// 	}
-// 	return result
+// function join (str, concatStr) {
+//   var result = str[0]
+//   for (var i = 1; i < str.length - 1; i++) {
+//     result = result + concatStr + str[i]
+//   }
+//   return result
 // }
-// console.log(repeat('Hello ', 5))
+// join([1, 2, 3], '')
+
+// function join (str, concatStr) {
+//   var result = str[0]
+//   for (var i = 1; i < str.length - 1; i++) {
+//     result = result + str[i] + concatStr
+//   }
+//   console.log(result = str[str.length - 1])
+// }
+
+// hw5-2 forloop
+function repeat (str, times) {
+  var result = ''
+  for (var i = 0; i < times; i++) {
+    result += str
+  }
+  return result
+}
+console.log(repeat('yoyoyo', 2))
+
+// // while loop
+// function repeat (str, times) {
+//   var result = ''
+//   var i = 0
+//   while (i < times) {
+//     result += str
+//     i++
+//   }
+//   return result
+// }
+// console.log(repeat('a', 5))

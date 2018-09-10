@@ -1,25 +1,31 @@
+/*hw1：印出星星
+給定 n（1<=n<=30），依照規律印出正確圖形
 
-//第一次寫，沒有理解題目
-// function printStars(n) {
-// 	var result = '*'
-// 	for (i = 1; i <= n; i++) {
-// 		console.log(result)
-// 	}
-// }
-// printStars(5)
+n = 1
+*
 
+n = 3
+*
+*
+*
 
+*/
+// for loop
 function printStars(n) {
   var result = '*'
-        if (1 <= n && n <= 30 ) {
-    for (i = 1; i <= n; i++) {
-        console.log(result)
-    }
+    for (var i = 1; i <= n; i++) {
+    console.log(result)
+  }
 }
-}
+printStars(5)
 
-// printStars(1)
-
-// printStars(3)
-
-printStars(6)
+// while loop
+// function printStars(n){
+//   var i = 1
+//   var result = '*'
+//   while(i <= n){
+//     console.log(result)
+//     i++
+//   }
+// }
+// printStars(10)
