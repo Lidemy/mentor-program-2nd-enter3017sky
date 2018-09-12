@@ -1,29 +1,21 @@
-//在 Javascript 對符號用 toUpperCase 它還是符號，所以不用管它
+// 在 Javascript 對符號用 toUpperCase 它還是符號，所以不用管它
 
-// function capitalize (input) {
-//   var output = ''
-//   for (var i = 0; i < input.length; i++) {
-//     output += input[i].toUpperCase()
+function capitalize (str) {
+  var result = ''
+  result = str[0].toUpperCase() + str.slice(1)
+  return result
+}
+console.log(capitalize('n'))
+console.log(capitalize('Nikeeee'))
+console.log(capitalize(',hello'))
+
+// function capitalize (str) {
+//   var result = ''
+//   for (var i = 0; i < str.length; i++) {
+//     result = str[0].toUpperCase()
 //   }
-//   console.log(output)
+//   return result + str.slice(1)
 // }
-
-// capitalize('nike')
-
-funciotn capitalize(input){
-	var  output =''
-var result = input.chatAt(0).toUpperCase()+input.slick(1)
-return result
-}
-capitalize('nike')
-
-
-
-function capitalize(str) {
-	var first = str[0].toUpperCase
-	return first + str.slice(1)
-}
-
-console.log( capitalize('nike'))
-
-return str.replace(str[0],str[0].toUpperCase())
+// console.log(capitalize('n'))
+// console.log(capitalize('Nikeeee'))
+// console.log(capitalize(',hello'))
