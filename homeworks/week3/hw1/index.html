@@ -29,9 +29,10 @@
     .nav__menu { /* 設定導航欄的菜單選項 */
         color: #A3A5A7;
         margin-left: 20px;
-        transition: color 0.7 ease-in;
+        transition: all 0.3s ease-in; /* 要加 s */
     }
     .nav__menu:hover{ /* 設定滑鼠移到 menu 時呈現的效果 */
+        cursor: pointer; /* 變成鼠標 */
         color: white;
         /* font-size: 19px; */
     }
@@ -64,6 +65,7 @@
         transition: all 0.3s ease-in-out; /* 鼠標移到按鈕時顏色變化的效果 */
     }
     .head__btn:hover {
+        cursor: pointer;
         background: rgb(3, 93, 203); /* 鼠標移到按鈕的顏色變化 */
     }
     .pack {
@@ -88,6 +90,7 @@
         transition: all 0.3s ease-in-out; 
     }
     .pack__btn:hover {
+        cursor: pointer;
         background: #838383;
     }
     footer {
