@@ -1,0 +1,236 @@
+.body__set {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    background: rgb(214, 217, 220);
+}
+.main{
+    /* display: flex;
+    flex-direction: column; 
+    align-items:center;
+    justify-content: center; */
+    position: relative;
+    top: 60px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+.head__main {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    display: flex; 
+    flex: 0;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    background: rgb(100, 100, 100);
+}
+.bottom__footer {
+    display: flex; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background: rgb(100, 100, 100);
+
+    flex-direction: column;
+}
+.bottom__title {
+    font-size: 12px;
+    color:rgb(160, 160, 160);
+}
+.head__title {
+    /* font-family:'Microsoft JhengHei'; */
+    font-size: 40px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin:0 auto;
+}
+.head__logout {
+    position: relative;
+    right: 20px;
+    padding: 0 15px;
+    height: 30px;
+    font-size: 18px;
+    color: #303030;
+    text-decoration: none;
+    border-radius: 5px;
+    background: rgb(120, 120, 120);
+    display: flex;
+    align-items: center;
+
+    transition: all 0.2s ease-in;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.head__logout + .head__logout {
+    margin-left: 10px;
+}
+.head__logout:hover {
+    cursor: pointer;
+    background: rgb(160, 160, 160);
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.5);
+}
+body > div > div.meg__form > form {
+    margin-bottom: -0;;
+}
+.meg__form {
+    /* display: flex; */
+    /* max-width: 600px; */
+    /* margin: 0 auto; */
+    background: #909090;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in;
+    box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.7);
+}
+/* .form__wrap:hover, */
+/* .meg__form-top:hover,
+.meg__form-textarea:hover, */
+.meg__form:hover {
+    cursor: pointer;
+    /* filter: brightness(1.1); */
+    /* transition: all 0.2s ease-in; */
+    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.7);
+}
+/* 輸入暱稱 */
+.meg__form-top {
+    color: white;
+    background: #aaa;
+    padding: 10px;
+    border-radius:8px;
+    /* transition: all 0.2s ease-in; */
+}
+.meg__form-top > input {
+    width: 98%;
+    border-radius:3px;
+    background: #F5F5F5;
+    border: none;
+}
+
+/* 留言板的區塊*/
+.meg__form-textarea { 
+    background: #aeaeae;
+    border-radius: 8px;
+    /* margin-top: 10px; */
+    display: flex;
+    transition: all 0.2s ease-in;
+}
+.meg__form-textarea > textarea {
+    margin: 20px;
+    width: 100%;
+    height: 60px;
+    border-radius:3px;
+    background: #F5F5F5;
+    border: none;
+}
+.meg__form-submit {
+    /* width: 80px; */ /* 不要設寬度，默認寬度 */
+    padding: 0 15px; /* 按鈕文字左右的留白 */
+    height: 35px;
+    margin-top: 15px;
+    font-size: 18px;
+    border-radius: 6px;
+    background: rgb(120, 120, 120);
+    transition: all 0.2s ease-in;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.meg__form-submit:hover {
+    cursor: pointer;
+    background: rgb(160, 160, 160);
+}
+
+.meg__commnet {
+    /* max-width: 500px; */
+    background: #909090;
+    padding: 15px;
+    margin-top: 20px ;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.meg__subcommnet {  
+    background: #777777;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 15px 0 0 20px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.meg__wrap {  /* 包裹每個留言框 */
+    background: #777777;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.form__wrap { /* 包裹每個留言區塊 */
+    background: #777777;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: all 0.2s ease-in;
+}
+.meg__commnet-content {
+    /* text-align: start; */
+    background: #aeaeae;
+    font-size: 14pt;
+    padding: 5px;
+    border-radius: 8px;
+    margin-top: 5px;
+    /* 讓PHP 插入的文字可以換行 */
+    word-break: break-all; 
+}
+.meg__commnet-header { 
+    display: flex;
+    justify-content: space-between;
+}
+.meg__commnet-header > div { /* 包裹暱稱、時間的樣式 */
+    color: #E3E3E3;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    padding: 1px 6px 0px;
+    display: flex;
+    align-items: center;
+    /* display: inline-block;
+    background:#676767;
+    border: 2px solid #a1a1a1;  */
+}
+.meg__page-bar {
+    display: flex;
+    width: 300px;
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding-inline-start: 0px;
+    list-style: none;
+    /* align-content: space-between; */
+    margin: 5px auto; 
+    /* padding: none; */
+}
+.meg__page > a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #909090;
+}
+.meg__page {
+    display: flex;
+    align-content: flex-start;
+    /* border: 1px solid black; */
+    padding: 0 1rem;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    transition: all 0.2s ease-in;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.meg__page:hover {
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+}
+.meg__page + .meg__page {
+    margin-left: 1rem;
+}
+/* .meg__commnet-author {
+    margin-left: 10px;
+} */
