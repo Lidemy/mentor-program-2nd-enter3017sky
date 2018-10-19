@@ -41,8 +41,8 @@ if (!empty($_POST['username'])) {
         <form class='login__form' action='/enter3017sky/week5/week5_register.php' method='POST'>
         <!-- required="required" 提交之前填寫輸入字段的提示 -->
             <div>User Register</div>
-            <label name='username'>username: <input name='username'  type="text" required="required" placeholder="輸入您的帳號"/></label>
-            <label name='password'>password: <input name='password' type='password' required="required" placeholder="輸入您的密碼" /></label>
+            <label name='username'>username: <input name='username'  type="text" required="required" placeholder="輸入您的帳號" autocomplete="off"/></label>
+            <label name='password'>password: <input name='password' type='password' required="required" placeholder="輸入您的密碼" autocomplete="off"/></label>
             <label>nickname: <input name='nickname' required="required" placeholder="輸入您的暱稱" /></label>
             <div id='btn'>
                 <button class='btn' name='submit' type='submit'>註冊</button>

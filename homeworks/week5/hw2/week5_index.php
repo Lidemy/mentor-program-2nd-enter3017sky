@@ -67,15 +67,37 @@ if (isset($_COOKIE["user_id"]) && !empty($_COOKIE["user_id"])) {
         </div>
         <div class='meg__commnets'>
 <?php
-    // 顯示所有留言
-     require_once('conn.php');
 
+
+    require_once('conn.php');
+
+             // 查詢主要頁數
+    // $comments = '';
+    // SELECT COUNT(Column_name) FROM table_name WHERE condition;
+    $page_sql = "SELECT COUNT(parent_id) AS meg_data FROM enter3017sky_comments WHERE parent_id = 0";
+    // var_dump($page_sql);
+    // var_dump($conn->query($page_sql));
+    // 加上 die($conn->error); 印出錯誤
+    $page_result = $conn->query($page_sql);
+    $page_row = $page_result->fetch_assoc();
+
+        // 確認總頁數
+    $pages_num = ceil($page_row['meg_data'] / 10);
+    
+    // 設定目前所在的頁數
+    if(!isset($_GET['page'])) $page = 1;
+    else $page = intval($_GET['page']);
+    // var_dump($page);
+
+
+
+
+    // 顯示所有留言
     // 選擇 comments資料表中的 id content created_id 以及 users 資料表的 nickname
     // 只要撈 parent_id 等於 0 的
     $sql = "SELECT enter3017sky_comments.id, enter3017sky_comments.content, enter3017sky_comments.created_at, enter3017sky_user.nickname FROM enter3017sky_comments 
     LEFT JOIN enter3017sky_user ON enter3017sky_comments.user_id = enter3017sky_user.id
-    WHERE parent_id = 0 ORDER BY created_at DESC LIMIT 10 ";
-    
+    WHERE parent_id = 0 ORDER BY created_at DESC LIMIT " . ($page - 1)*10 . " ,10 ";
     $result = $conn->query($sql);
         // var_dump($result);
         // var_dump($result->fetch_assoc());
@@ -87,16 +109,15 @@ if (isset($_COOKIE["user_id"]) && !empty($_COOKIE["user_id"])) {
         </div>
     </div>
     <footer class='bottom__footer'>
-        <ul class='meg__page-bar'>
-            <li class='meg__page'><a>&#60;</a></li>
-            <li class='meg__page'><a href="#">1</a></li>
-            <li class='meg__page'><a href="week5_index.php">2</a></li>
-            <li class='meg__page'><a>3</a></li>
-            <li class='meg__page'><a>4</a></li>
-            <li class='meg__page'><a>5</a></li>
-            <li class='meg__page'><a>6</a></li>
-            <li class='meg__page'><a>7</a></li>
-            <li class='meg__page'><a>&#62;</a></li>
+        <ul class="meg__page-bar">
+            <?php
+                //設定頁碼
+                for ( $i = 1; $i<=$pages_num; $i++ ){
+                    //如果是目前頁面的頁碼不做連結
+                    if ( $i  ===  $page ) echo " <li class='meg__page'><b>$i</b></li> " ;
+                    else echo " <li class='meg__page'><a href='week5_index.php?page=".$i."'>".$i."</a></li> ";
+                }
+            ?>
         </ul>
         <div class='bottom__title'>enter3017sky MTR02 Homework Week5</div>
     </footer>

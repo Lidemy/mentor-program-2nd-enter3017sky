@@ -199,7 +199,7 @@ body > div > div.meg__form > form {
 }
 .meg__page-bar {
     display: flex;
-    width: 300px;
+    /* width: 300px; */
     box-sizing: border-box;
     justify-content: space-around;
     padding-inline-start: 0px;
@@ -229,7 +229,7 @@ body > div > div.meg__form > form {
     box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
 }
 .meg__page + .meg__page {
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 /* .meg__commnet-author {
     margin-left: 10px;

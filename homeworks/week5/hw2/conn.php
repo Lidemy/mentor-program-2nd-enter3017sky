@@ -20,7 +20,7 @@ $db_name = "mentor_program_db";
 // 建立連接
 $conn = new mysqli($db_host, $db_username, $db_password, $db_name);
 $conn->query("SET NAMES 'UTF8'");
-// $conn->query("set time_zone = '+8:00'");
+$conn->query("set time_zone = '+8:00'");
 
 
 // 檢查連接

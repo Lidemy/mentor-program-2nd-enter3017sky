@@ -40,11 +40,11 @@
         <div class='head__title'>留言版</div>
     </header>
     <div class='login__mian'>
-        <form class='login__form' action='/enter3017sky/week5/week5_login.php' method='POST'>
+        <form class='login__form' action='/enter3017sky/week5/week5_login.php' method='POST' autocomplete="new-password">
         <!-- required="required" 提交之前填寫輸入字段的提示 -->
             <div>User Login</div>
             <label class='input__user input' name='username'>
-                username: <input name='username' type="username" required="required" placeholder="輸入您的帳號"/>
+                username: <input name='username' type="username" required="required" placeholder="輸入您的帳號" />
             </label>
             <label class='input__pass input' name='password'>
                 password: <input name='password' type='password' required="required" placeholder="輸入您的密碼" />
