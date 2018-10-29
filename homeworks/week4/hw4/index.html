@@ -6,7 +6,75 @@
     <title>Week4 hw4</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<script type="text/javascript">
+    
+document.addEventListener("DOMContentLoaded" , function(){
+
+    const q = function(selector){
+        return {
+            hide: function(){
+                document.querySelector(selector).style.display = "none";
+            },
+            show: function(){
+                document.querySelector(selector).style.display = "";
+            }
+        }
+    }
+
+    var el = q(".test");
+    document.querySelector("#hidden").addEventListener('click', function(){
+        el.hide();
+    })
+    document.querySelector("#visible").addEventListener('click', function(){
+        el.show();
+    })
+
+    document.querySelector("#swicth").addEventListener('click', function(){
+        if(document.querySelector('#box').style.display == 'none'){
+            el.show();
+        } else {
+            el.hide();
+        }
+    }) 
+
+
+})
+</script>
+<body>
+<style>
+    body {
+        /* margin: 0 auto; */
+    }
+    #box {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: 200px;
+        background: #808080;
+        border-radius: 10%;
+        margin: 10% auto;
+    }
+    #visible{
+        margin-left: 30px;
+    }
+    .btns {
+        position: absolute;
+        left: 40%;
+        bottom: 50px;
+    }
+
+    </style>
+</head>
 <body>
     
+    <div class='test' id="box"></div>
+
+    <div class="btns">
+        <button id="swicth" class="hs">Swicth</button>
+        <button id="visible" class="hs">Show</button>
+        <button id="hidden" class="hs">Hide</button>
+    </div>
+</body>
+
 </body>
 </html>
