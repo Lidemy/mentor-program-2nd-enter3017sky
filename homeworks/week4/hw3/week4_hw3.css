@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 0;
+    margin: 0px;
+    background: url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/bg-default.jpg) no-repeat center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.container {
+    background: rgba(0, 0, 0, 0.3);
+    min-height: 100vh;
+}
+.header {
+    width: 100%;
+    margin: 0 auto;
+    /* background: black; */
+}
+.navbar {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex; 
+    position: fixed;
+    top:0px;
+    justify-content: space-between;
+    align-items: center;  /* 這行讓最左、最右的字、垂直置中 */
+    color:white;
+    z-index: 1;
+}
+.footer {
+    color: aliceblue;
+    font-family: cursive;
+    text-align: center;
+    margin: 30px 0;
+}
+.bar__brand {
+    display: flex;
+    /* align-items: center; */
+}
+.bar__left {
+    padding-left: 15px;
+}
+.bar__right {
+    padding-right: 15px;
+}
+.bar__right > span {
+    background: white;
+    margin-left: 2px;
+    padding: 0 2px;
+    color: black;
+}
+
+.menu { /*直接對 ul 使用 flex 會變成 row 的方向*/
+    display: flex;
+    list-style: none;
+}
+li + li {
+    padding-left: 35px;
+}
+
+.header__title {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 70px;
+}
+.header__title  h1 {
+    margin: 0;
+    font-size: 60px;
+    font-weight: 700;
+    font-family: cursive;
+    color: aquamarine;
+} 
+.header__title  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 350;
+    font-family: cursive;
+    color: aqua;
+}
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+    
+}
+.row {
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.col {
+    width: 250px;
+    border: 4px solid rgba(120, 120, 120, 0.3);
+    padding: 2px;
+    transition: all 0.2s ease-in;
+}
+
+.col:hover {
+    cursor: pointer;
+    filter: brightness(1.2);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.7);
+    /* border: 4px solid rgba(200, 200, 200, 0.7); */
+    background: rgba(20, 20, 20, 0.9);
+
+
+    position: relative;
+    transform: scale(1.2);
+    opacity: 1;
+    z-index: 1;
+}
+.preview img:hover {
+    z-index: 1;
+}
+.preview {
+    /* border: 1px solid yellow; */
+    /* width: 249px;
+    height: 156px; */
+    /* margin-left: -3px; */
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.viewers { /* 觀看人數 */
+    background: rgba(50, 50, 50, 0.5);
+    /* background: yellow; */
+    color: rgb(154, 154, 154);
+    display: flex;
+    width: 97%;
+    height: 18px;
+    position: absolute;
+    bottom: 1px;
+    left: 3px;
+    font-size: small;
+    text-decoration: none;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+.preview img {
+    max-width: 240px;
+    max-height: 135px;
+}
+.bottom {
+    display: flex;
+    height: 70px;
+    margin-top: 1px;
+}
+.bottom__intro {
+    position: relative;
+    width: 170px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.7;
+}
+.bottom_avatar {
+    /* border: 1px solid green; */
+    width: 70px;
+    height: 70px;
+}
+.bottom_avatar img {
+    max-width: 70px;
+    height: 70px;
+}
+.channel__name {
+    margin-left: 10px;
+    font-size: 12px;
+    color: rgb(162, 162, 162);
+    align-items: flex-start;
+}
+.owner__name {
+    /* 處理文字過長顯示 ... */
+    margin: 5px 0 5px 5px ;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+a {
+    /* 消除連結底線 */
+    text-decoration:none;
+}
+
+@media screen and (max-width: 1100px){
+    .wrapper {
+        width: 90%;
+    }
+}

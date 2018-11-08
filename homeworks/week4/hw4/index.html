@@ -6,10 +6,31 @@
     <title>Week4 hw4</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<script type="text/javascript">
-    
-document.addEventListener("DOMContentLoaded" , function(){
 
+<style>
+    body {
+        /* margin: 0 auto; */
+    }
+    #box {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: 200px;
+        background: #808080;
+        border-radius: 10%;
+        margin: 10% auto;
+    }
+    #visible{
+        margin-left: 30px;
+    }
+    .btns {
+        position: absolute;
+        left: 40%;
+        bottom: 50px;
+    }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded" , function(){
     const q = function(selector){
         return {
             hide: function(){
@@ -36,34 +57,8 @@ document.addEventListener("DOMContentLoaded" , function(){
             el.hide();
         }
     }) 
-
-
 })
 </script>
-<body>
-<style>
-    body {
-        /* margin: 0 auto; */
-    }
-    #box {
-        display: flex;
-        flex-direction: column;
-        width: 200px;
-        height: 200px;
-        background: #808080;
-        border-radius: 10%;
-        margin: 10% auto;
-    }
-    #visible{
-        margin-left: 30px;
-    }
-    .btns {
-        position: absolute;
-        left: 40%;
-        bottom: 50px;
-    }
-
-    </style>
 </head>
 <body>
     

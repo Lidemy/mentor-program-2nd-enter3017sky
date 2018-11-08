@@ -1,7 +1,7 @@
 {
   "name": "mentor-program-2nd",
   "version": "1.0.0",
-  "description": "## 這是什麼",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest --env=node"
