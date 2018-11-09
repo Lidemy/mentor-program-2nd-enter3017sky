@@ -79,9 +79,11 @@ element.show() // 顯示
 
 2. 什麼是 Ajax？
   - Asynchronous JavaScript and XML，非同步的 JavaScript 與 XML 技術。指的是一套綜合了多項技術的瀏覽器端網頁開發技術。
-  - Ajax 使用一種非同步處理的模型，這是表示使用者可以在瀏覽器等待資料載入的時候，仍然可以進行其他操作，讓操作更順暢，使用者體驗更好。
+  - AJAX 使用 XMLHttpRequest 物件來與伺服器進行通訊。它可以傳送並接收多種格式的資訊，包括 JSON、XML、HTML、以及文字檔案。AJAX 最吸引人的特點是「非同步」的本質，這代表它可以與伺服溝通、交換資料、以及更新頁面，且無須重整網頁。
   - 簡單來說就是透過瀏覽器提供的 API，可以不換頁就跟 Server 溝通。
-  - 應用：輸入帳號就能確認有沒有重複、留言之後不會換頁
+
+  參考資料：[AJAX 是什麼？|MDN](https://developer.mozilla.org/zh-TW/docs/Web/Guide/AJAX/Getting_Started)
+  
 
 3. HTTP method 有哪幾個？有什麼不一樣？
   - 1. GET: GET 方法請求展示指定資源。使用 GET 的請求只應用於取得資料。
@@ -110,6 +112,8 @@ element.show() // 顯示
   - 傳輸的資源：Web服務接受與返回的網際網路媒體類型，比如：JSON，XML，YAML等。
   - 對資源的操作：Web服務在該資源上所支援的一系列請求方法（比如：POST，GET，PUT或DELETE）。
   - 符合這種設計風格就是 RESTful
+  
+  
   參考資料：[維基百科](https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%8E%B0%E5%B1%82%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2)
   [restful Tutorial](https://restfulapi.net/)
 

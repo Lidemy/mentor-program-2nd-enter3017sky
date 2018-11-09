@@ -25,74 +25,67 @@
 //     }
 // }
 
-function getData(cb) {
-    const clientId = 'eq990vt85o5dquacakpy5u32ofrmmt';
-    const limit = 20;
 
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://api.twitch.tv/kraken/streams/?client_id=' + clientId + '&game=League%20of%20Legends&limit=' + limit , true);
+var request = new XMLHttpRequest();
+var clientId = 'eq990vt85o5dquacakpy5u32ofrmmt';
+var limit = 20;
+var apiUrl = 'https://api.twitch.tv/kraken/streams/?client_id=' + clientId + '&game=League%20of%20Legends&limit=' + limit ;
+request.open('GET', apiUrl, true);
+request.onload = function() {
+    if (request.status === 200) {
+        // 成功的話 處理資料
+        var data = JSON.parse(request.responseText);
+        console.log(data)
+        var cols = data.streams
+        // 有 index 才取得到個別的資料
+        console.log(cols[0])
+        console.log(cols[0].channel.display_name)
+        // console.log(cols[0].channel.name)
+        console.log(cols[0].preview.medium)
+        // console.log(cols[0].channel.status)
+        // console.log(cols[0].channel.views)
+        console.log(cols[0].channel.logo) 
+        // console.log(cols[0].channel._links.videos) 
+        // console.log(displayName)
 
-        // // 加一個 callback function
-    request.onload = function() {
-        if (request.status >= 200 && request.status < 400) {
-            // Success!
-            // 用 JSON.parse，把 JSON 格式轉乘 javascript 的物件
-            var data = JSON.parse(request.responseText);
 
-            // console.log(data);
+        var row = document.querySelector('.row')
+        for (var i = 0; i < cols.length; i++) {
+            row.innerHTML +=`
 
-            cb(null, data);
-        } else {
-            // We reached our target server, but it returned an error
+            <div class='row'>
+                <a href="${cols[i].channel.url}" target="_blank">
+                    <div class='col'>
+                        <div class='preview'>
+                                <img src="${cols[i].preview.medium}" />
+                            </div>
+                            <div class='bottom'>
+                            <div class='bottom__avatar'>
+                                <img src="${cols[i].channel.logo}" />
+                            </div>
+                            <div class='bottom__intro'>
+                                <div class='owner__name'>
+                                    ${cols[i].channel.status}
+                                </div>
+                                <div class='channel__name'>
+                                    ${cols[i].channel.display_name}
+                                </div>
+                                <span class='viewers'>${cols[i].channel.views}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>`
         }
-    };
-    request.onerror = function() {
-    // There was a connection error of some sort
-    };
-    request.send();
 
-}
-
-
-getData((err, data) => {
-    //const (streams)=data;
-    const streams = data.streams;
-
-    const $row = $('.row');
-    for(var i = 0; i < streams.length; i++){
-        $row.append(getColumn(streams[i]));
+    } else {
+        alert('有什麼地方出錯了！！')
+        // We reached our target server, but it returned an error
     }
-    // //ES6 的寫法
-    // for(let stream of streams) {
-    //     $row.append(getColumn(stream));
-    // }
-});
+};
 
+request.onerror = function() {
+  // There was a connection error of some sort
+};
 
-
-// return 每一個 col 的 html
-function getColumn(data) {
-    return `
-    <a target="_blank" href="https://www.twitch.tv/${data.channel.name}">
-        <div class='col'>
-            <div class='preview'>
-                <img src='${data.preview.medium}' />
-            </div>
-            <div class='bottom'>
-                <div class='bottom_avatar'>
-                    <img src='${data.channel.logo}' />
-                </div>
-                <div class='bottom__intro'>
-                    <div class='owner__name'>
-                        ${data.channel.status}
-                    </div>
-                    <div class='channel__name'>
-                        ${data.channel.display_name}
-                    </div>
-                    <span class='viewers'>Viewers: ${data.viewers}</span>
-                </div>
-            </div>
-        </div>
-    </a>`;
-}
-
+request.send();
