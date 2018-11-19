@@ -66,10 +66,12 @@
  - 使用 token 來驗證來源要求者。( SessionID + salt, 亂數值 )
  - Double Submit Cookie。ex. `當使用者按下 submit 的時候，server 比對 cookie 內的 csrftoken 與 form 裡面的 csrftoken，檢查是否有值並且相等，就知道是不是使用者發的了。`
  - browser 本身的防禦。ex. Google 在 Chrome 51 版的時候正式加入了這個功能：SameSite cookie。
-https://blog.techbridge.cc/2017/02/25/csrf-introduction/
+
+
 參考資料：
 - [跨站請求偽造](https://sls.weco.net/node/24443)
 - [讓我們來談談 CSRF](https://blog.techbridge.cc/2017/02/25/csrf-introduction/)
+
 ## 請舉出三種不同的雜湊函數
  - MD5
  - SHA-1
@@ -79,16 +81,26 @@ https://blog.techbridge.cc/2017/02/25/csrf-introduction/
 
 ## 請去查什麼是 Session，以及 Session 跟 Cookie 的差別
 
-  cookie 是瀏覽器可以存儲東西的地方
+1. 由於 HTTP 協議是無狀態特性，所以 Session 就像一個難以偽造的通行證機制，透過它來辨別使用者。
 
-  Session 是一個通行證機制。
+2.
 
-  透過 cookie 儲存 Session
+ ### Cookie
+  - Cookie 指某些網站為了辨別用戶身分，將用戶的訊息儲存在瀏覽器(client)的技術。
+  - cookie 由於儲存在 client 端，安全性較低。
+  - 有時效性。
+  - 儲存指定的 key 及 value。
 
-  使用者偏好設定
+ ### Session
+  - Session 負責紀錄在 web server 上的使用者訊息。Session 機制會在一個用戶完成身分認證後，存下所需的用戶資料，接著產生一組對應的 id，存入 cookie 後傳回用戶端。
+  - Session 安全性較高。
+  - Session 使用 [uuid](https://www.wikiwand.com/zh/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81)。
 
-  
+資考資料：
 
+[Cookie/Session的機制與安全 - 掃文資訊](https://hk.saowen.com/a/342d11ae529c1969cfb50cbcbf85d96d73c48d8b85ba92ddc16f62f7f2a15bb6)
+[正確理解HTTP短連接中的Cookie、Session和Token](http://www.52im.net/thread-1525-1-1.html)
+[cookie 和session](http://wiki.jikexueyuan.com/project/node-lessons/cookie-session.html)
 
 ## `include`、`require`、`include_once`、`require_once` 的差別
 

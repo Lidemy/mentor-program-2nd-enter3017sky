@@ -1,0 +1,339 @@
+body {
+    background: #91989F;
+    margin: 0px;
+    padding: 0;
+}
+* {
+    box-sizing: border-box;
+}
+.nav {
+    position: fixed;
+    top: 0; /* position設定之後，沒設top或其他，container 用margin-top，會跑掉。 */
+    background: #787878;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.nav__list {
+    list-style: none;
+    padding: 0 30px;
+    display: flex;
+}
+.nav__item + .nav__item {
+    margin-left: 10px;
+}
+
+/* .nav__item:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.9); 
+    filter: brightness(1.2);
+} */
+.nav__item a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid #BDC0BA;
+    border-radius: 5px ;
+    background: #717070;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.9); 
+}
+.nav__item a:hover {
+    /* 調節圖片的亮度 */
+    filter: brightness(1.2);
+
+    /* background: #8f8f8f; */
+    /* box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.9);  */
+}
+.bottom__footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    background: #787878;
+    width: 100%;
+    /* justify-content: center; */
+    /* height: 50px; */
+}
+.page_bar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    list-style: none;
+    padding-inline-start: 0;
+    margin: 5px;
+}
+.page_bar  a {
+    text-decoration: none;
+    color: white;
+    padding: 0px 10px;
+    border: 1px solid #BDC0BA;
+    border-radius: 5px ;
+    background: #717070;
+    /* margin: 10px; */
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.9); 
+}
+.meg__page + .meg__page {
+    margin-left: 1.5rem;
+}
+
+.container {
+    margin-top: 54px; 
+    padding: 20px 30px 0;
+    /* margin: 0 auto; */
+}
+.wrapper__form {
+    max-width: 700px;
+    background: gray;
+    margin: 0 auto;
+}
+.meg__form {
+    text-align: center;
+    /* max-width: 60%; */
+    /* max-width: 400px; */
+    /* min-width: 300px; */
+    margin: 0 auto;
+    border: 2px solid #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(191, 191, 191);
+}
+
+.register__form {
+    text-align: center;
+    /* max-width: 60%; */
+    max-width: 400px;
+    /* min-width: 300px; */
+    margin: 0 auto;
+    border: 2px solid #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(191, 191, 191);
+    padding: px;
+    /* margin: 0 0 40px 0; */
+}
+
+.form-row {
+    margin: 20px 0;
+    justify-content: flex-start;
+    font-size: 18px;
+}
+
+.comments__wrapper {
+    text-align: center;
+    max-width: 700px;
+    margin: 20px auto;
+    border: 2px solid #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(191, 191, 191);
+    padding: 10px;
+}
+.meg__wrap {
+    max-width: 700px;
+    margin: 0 auto 10px;
+    border: 2px solid #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(191, 191, 191);
+    padding: 10px;
+}
+.sub-meg__wrap {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 10px;
+    /* border: 1px inset #D6D9DC; */
+    border: 2px dashed #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(180,180,180);
+    padding: 10px;
+}
+.sub-meg__user {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 10px;
+    border: 2px dashed #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(233, 244, 224);
+    padding: 10px;
+}
+
+.comment__header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.comment__header__left {
+    display: flex;
+    /* flex-direction: row; */
+}
+.comment__header__right {
+    display: flex;
+}
+
+    /* 登入時顯示暱稱 */
+.user__nick {
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.9); 
+    margin-top: 15px;
+    font-size: 25px;
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 3px;
+}
+
+
+/* 主留言：作者、時間戳 */
+.commnet__author,
+.commnet__timestmp {
+    border: 2px solid #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(191, 191, 191);
+    padding: 2px 4px;
+
+}
+.commnet__timestmp,
+.sub-commnet__timestmp {
+    margin-left: 5px;
+}
+
+/* 子留言：作者、時間戳 */
+.sub-commnet__author,
+.sub-commnet__timestmp {
+    border: 2px dashed #D6D9DC;
+    border-radius: 3px;
+    background-color: rgb(180, 180, 180);
+    padding: 2px 4px;
+}
+.hidden {
+    margin-top: 60px;
+}
+
+.commnet__content {
+    /* border: 2px solid #D6D9DC; */
+    text-align: start;
+    border-radius: 3px;
+    margin: 20px 0;
+    word-break: break-all; 
+}
+.sub-commnet__content {
+    /* border: 2px solid #D6D9DC; */
+    text-align: start;
+    border-radius: 3px;
+    margin: 20px 0;
+    word-break: break-all; 
+}
+
+textarea {
+    /* display: block; */
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    border: 3px solid #D6D9DC;
+    border-radius: 3px;
+    width: 90%;
+    min-height: 120px;
+    resize: none;
+    /* margin-bottom: 10px; */
+    /* padding: 7px; */
+    /* margin: 0 50px; */
+  }
+.form-row input[type='text'],
+.form-row input[type='password'] {
+    background-color: #FFFFFF;
+    border: 2px solid #D6D9DC;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 16px;
+  }
+
+
+/* 包覆留言submit 按鈕的 div */
+.sub__btn {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 留言submit 按鈕 */
+.submit__btn {
+    /* position: relative; */
+    /* right: 50px; */
+    /* text-align: center; */
+    /* width: 90px; */
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #5995DA;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+.submit__btn:hover {
+/* background-color: #76AEED; */
+filter: brightness(1.2);
+}
+.submit__btn:active {
+/* background-color: #407FC7; */
+filter: brightness(0.9);
+}
+
+/* 刪除按鈕 */
+.delete__btn {
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: rgb(255, 100, 100);
+    border: none;
+    border-radius: 3px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.delete__btn:hover {
+    /* background-color: rgb(216, 120, 120); */
+    /* 用 filter:btightness 改變亮度 */
+    filter: brightness(1.2);
+}
+.delete__btn:active {
+    /* background-color: rgb(218, 60, 60); */
+    filter: brightness(0.8);
+}
+
+/* 編輯按鈕 */
+.edit__btn {
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: rgb(50, 213, 121);
+    border: none;
+    border-radius: 3px;
+    padding: 5px 20px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.edit__btn:hover {
+    /* background-color: rgb(119, 218, 156); */
+    filter: brightness(1.2);
+}
+.edit__btn:active {
+    /* background-color: rgb(40, 180, 90); */
+    filter: brightness(0.8);
+}
+
+@media only screen and (max-width: 600px) {
+    .submit__btn {
+        width: 100%;
+    }
+    .nav {
+        background: none;
+    }
+    .bottom__footer {
+        background: none;
+    }
+
+}
+@media only screen and (max-width: 500px) {
+    .comment__header__left,
+    .comment__header__right {
+        display: flex;
+        flex-direction: column;
+    }
+    .submit__btn {
+        width: 100%;
+    }
+
+}
