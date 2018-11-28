@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do List - week7-hw2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <style>
+        body {
+            background: #f0f5f9;
+        }
+        .container {
+            margin-top: 4rem;
+        }
+        .col {
+            margin: 0 auto;
+            max-width: 500px;
+            border: 1px solid gray;
+            box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .p1 {
+            position: absolute;
+            z-index: -1;
+            bottom: -5px;
+            left: 6px;
+            width: 488px;
+            /* margin: 0 auto; */
+        }
+        .p2 {
+            position: absolute;
+            z-index: -2;
+            bottom: -9px;
+            left: 11px;
+            width: 478px;
+        }
+        .success {
+            color: #155724;
+            background-color: #d4edda;
+        }
+
+        .time {
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let todoInput = document.querySelector(".add-todo");
+            let todoList = document.querySelector(".todo_list");
+            let addBtn = document.querySelector(".addBtn");
+            let delBtn = document.querySelectorAll(".delete");
+
+                // 點擊新增 todo 的按鈕會執行 addToDo()
+            addBtn.onclick = function() {
+                if (todoInput.value != ''){
+                    addToDo(todoInput.value);
+                }
+            }
+
+                // 輸入 todo 後按下 Enter 的事件
+            todoInput.addEventListener('keydown', function(e) {
+                if (e.key === "Enter" && e.target.value != '') {
+                    addToDo(e.target.value);
+                    // console.log(e.target.value);
+                    
+                }
+            })
+
+            todoList.addEventListener('click', function(e) {
+                    // 選取點擊的元素
+                let element = e.target;
+                let toDoList = element.parentNode.parentNode.parentNode;
+                let toDoItem = element.parentNode.parentNode;
+
+                    // 點到刪除按鈕才執行
+                if(element.classList.contains('delete')) {
+
+                    // 方法一  點到刪除按鈕的上上層 移除
+                    toDoItem.remove();
+
+                    // 方法二 必須先參照到親元素（parentNode）之後才能回來刪除該元素
+                    // toDoList.removeChild(element.parentNode.parentNode)
+
+                // 如果是按下完成的按鈕，且該代辦還沒完成才執行以下動作
+                } else if (element.classList.contains('done')) {
+                    if (element.classList.contains('todo__undone')) {
+                        // 方法一 改變背景色 增加 className
+                        // toDoItem.className += ' success'
+                        //方法二
+                        toDoItem.classList.add('success');
+                        element.classList.add('btn-outline-primary');
+                        element.classList.remove('todo__undone', 'btn-outline-success');
+                        element.innerText = '未完成';
+
+                        // // 移除完成的按鈕
+                        // element.remove();
+                    } else {
+                        toDoItem.classList.remove('success');
+                        element.classList.remove('btn-outline-primary');
+                        element.classList.add('todo__undone', 'btn-outline-success');
+                        element.innerText = '完成';
+                    }
+                }
+            })
+
+
+            function addToDo(value) {
+                const newTodo = getToDoHtml(value);
+                todoInput.value = '';
+                todoList.innerHTML += newTodo;
+            }
+
+            function getToDoHtml(value) {
+                return `
+                <li class="list-group-item d-flex justify-content-between align-items-center">${value}
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-success don todo__undonee">完成</button>
+                        <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                    </div>
+                </li>`;
+            }
+            
+            // 一開啟網頁就呼叫自己
+            // (function showTime() {
+            //     const today = new Date();
+            //     const h = today.getHours();
+            //     const m = today.getMinutes();
+            //     const s = today.getSeconds();
+            //     var times = document.querySelector('.time');
+            //     times.innerText = `
+            //         ${h}:${m}:${s}`;
+            //     setTimeout(function(){
+            //         showTime();
+            //     }, 500);
+            // })()
+
+        })
+
+
+       
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="time"></div>
+        <div class="row">
+            <div class="col card card-body">
+                <div class="col card card-body p1"></div>
+                <div class="col card card-body p2"></div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control add-todo" placeholder="新增代辦事項" />
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary addBtn" type="button">Add New To-Do</button>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush todo_list">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        泡溫泉
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done todo__undone">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">看教學影片
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done todo__undone">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center success">
+                        寫 Homework
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-primary done">未完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">練習 JavaScript
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done todo__undone">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+    <!-- 簡化程式碼？ -->
+    <!-- 用 cookie 暫存新增的 todo? -->
+    <!-- 用 localstorage 暫存新增的 todo?-->
+
+
+<!-- 
+參考資料
+https://jmln.tw/blog/2017-07-07-vanilla-javascript-dom-manipulation.html
+
+
+className += ' aaa'
+classList.add('aaa')
+
+classList.add('aaa', 'bbb', 'ccc'); //新增多個className
+classList.remove('aaa', 'bbb', 'ccc'); //移除多個className
+
+
+點擊到的元素會被移除
+   el = e.target
+   el.remove();
+
+
+
+let toDoItem = element.parentNode.parentNode;
+
+方法一  點到刪除按鈕的上上層 移除
+toDoItem.remove();
+
+方法二 必須先參照到親元素（parentNode）之後才能回來刪除該元素
+toDoList.removeChild(element.parentNode.parentNode)
+
+
+ -->

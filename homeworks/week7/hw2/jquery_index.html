@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do List - week7-hw2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <style>
+        body {
+            background: #f0f5f9;
+        }
+        .container {
+            margin-top: 4rem;
+        }
+        .col {
+            margin: 0 auto;
+            max-width: 500px;
+            border: 1px solid gray;
+            box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.3);
+            position: relative;
+            
+        }
+        .p1 {
+            position: absolute;
+            z-index: -1;
+            bottom: -5px;
+            left: 6px;
+            max-width: 488px;
+            /* margin: 0 auto; */
+        }
+        .p2 {
+            position: absolute;
+            z-index: -2;
+            bottom: -9px;
+            left: 11px;
+            max-width: 478px;
+        }
+        .success {
+            color: #155724;
+            background-color: #d4edda;
+        }
+        .info {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    <script>
+        
+
+        $(document).ready(function() {
+            // 對 input 加 keydown 的事件監聽
+            // 按下 Enter 且內容不為空才送出
+            $('.add-todo').keydown(function(e) {
+                if(e.key === 'Enter' && e.target.value !=''){
+
+                // 讓 addToDo() 處理輸入的值
+                addToDo(e.target.value);
+                }
+            })
+
+            // 對 btn 加 click 的事件監聽，按下時內容不為空才送出
+            $('.addBtn').click(function(e) {
+                if($('.add-todo').val() !== ''){
+                // 讓 addToDo() 處理輸入的值
+                addToDo($('.add-todo').val());
+                }
+            })
+            $('.todo_list').click(function(e) {
+                const el = $(e.target);
+                if (el.hasClass('delete')) {
+                    // 按下刪除後移除 todo-li
+                    el.parent().parent().fadeOut(1000, function() {
+                        el.parent().parent().remove();
+                    })
+                } else if (el.hasClass('done')){
+                    if(el.hasClass('todo__undone')) {
+                        el.parent().parent().removeClass('success');
+                        el.addClass('btn-outline-success');
+                        el.removeClass('btn-outline-primary');
+                        el.removeClass('todo__undone');
+                        el.text('完成');
+                    } else {
+                        el.parent().parent().addClass('success');
+                        el.removeClass('btn-outline-success');
+                        el.addClass('btn-outline-primary');
+                        el.addClass('todo__undone');
+                        el.text('未完成');
+                    }
+                }
+            })
+        })
+
+
+
+            function addToDo(value) {
+                const newTodo = getToDoHtml(value);
+
+                // 把輸入框清空
+                $('.add-todo').val('');
+
+                // 新增 todo
+                let addNewToDo = $('.todo_list').append(newTodo);
+                addNewToDo.fadeIn(1000)
+            }
+
+            function getToDoHtml(value) {
+                return `
+                <li class="list-group-item d-flex justify-content-between align-items-center">${value}
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-success done">完成</button>
+                        <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                    </div>
+                </li>`;
+            }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col card card-body">
+                <div class="col card card-body p1"></div>
+                <div class="col card card-body p2"></div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control add-todo" placeholder="新增代辦事項">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary addBtn" type="button">Add New To-Do</button>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush todo_list">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        泡溫泉
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">看教學影片
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center success">
+                        寫 Homework
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-primary done todo__undone">未完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">練習 JavaScript
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <footer class="info">enter3017sky week7-hw2</footer>
+    </div>
+</body>
+</html>
