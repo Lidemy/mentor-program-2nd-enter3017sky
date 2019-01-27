@@ -2,6 +2,18 @@
 // 第一件事情，引入連線資料庫的檔案
 require './inc/conn.php';
 require_once './inc/utils.php';
+require_once './check_login.php';
+
+/** 防止惡意行為，沒有登入不能用。 */
+checkLoginAndPrintMsg($user, '你沒有登入齁！', './handle_update.php');
+// if(!isset($user) && empty($user)) {
+//     $_POST['title'] = null;
+//     $_POST['content'] = null;
+//     $_POST['category_id'] = null;
+//     $_POST['draft'] = null;
+//     $_POST['name'] = null;
+//     printMessage('嘿嘿嘿，想幹嘛？', './index.php');
+// }
 
 // 未完成之前，先把刪除作廢
 // printMessage('\n\n\n你已經編輯了你已經編輯了你已經編輯了...\n\n\n(模擬編輯)', './admin.php');
@@ -11,9 +23,8 @@ require_once './inc/utils.php';
 
     $id = $_POST['id'];
 
-    // 消毒，轉換 html 的字元。htmlentities 轉換所有的 html 標記(編碼沒設定好會出現亂碼), htmlspecialchars只格式化& ' " <和>這幾個特殊符號
-    $title = htmlspecialchars($_POST['title']);
-    $content = htmlspecialchars($_POST['content']);
+    $title = $_POST['title'];
+    $content = $_POST['content'];
     $draft = @$_POST['draft'];
 
     $category_id = @$_POST['category_id'];

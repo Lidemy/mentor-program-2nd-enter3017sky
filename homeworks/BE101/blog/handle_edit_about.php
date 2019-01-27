@@ -2,6 +2,18 @@
 
 require_once './inc/conn.php';
 
+require_once './inc/utils.php';
+require_once './check_login.php';
+
+/** 防止惡意行為，沒有登入不能用。 */
+checkLoginAndPrintMsg($user, '你沒有登入齁！');
+// if(!isset($user) && empty($user)) {
+//     $_POST['introduction'] = null;
+//     printMessage('嘿嘿嘿，想幹嘛？', './index.php');
+// }
+
+
+
 // $introduction = $_POST['introduction'];
 
 $introduction = str_replace("\r\n", "<br/>", $_POST['introduction']);
@@ -15,10 +27,10 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$introduction]);
 
-    header('location: ./about.php');
+    printMessage('編輯 About Me 成功！', './about.php');
 
 } catch(PDOException $e) {
-    echo 'fail';
+    echo 'Edit about me fail';
 }
 
 ?>

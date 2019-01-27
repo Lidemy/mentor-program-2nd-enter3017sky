@@ -1,6 +1,10 @@
 <?php
-
 require './inc/conn.php';
+require_once './inc/utils.php';
+include_once './check_login.php';
+
+/** 防止惡意行為，沒有登入不能用。 */
+checkLoginAndPrintMsg($user, '你沒有登入齁！');
 
 $id = $_GET['id']; // articles 的 id(文章 id)
 // $sql = "SELECT * FROM articles WHERE id = $id;
@@ -18,6 +22,9 @@ WHERE a.id = $id";
 $result = $pdo->query($sql);
 $row = $result->fetch();
 
+$title = $row['title'];
+$content = $row['content'];
+
 $draft = $row['draft'];
 
 $dis_draft = $draft?'編輯草稿':'編輯文章';
@@ -32,20 +39,11 @@ $checked_arr = explode(',', $category_list);
 ?>
 
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $dis_draft; ?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="main.js"></script>
-</head>
+<html lang="zh-Hant-TW">
+    <?php 
+        $web_title = '新增文章 « enter3017sky Blog';
+        include_once './inc/head.php'; 
+    ?>
 <body>
     <?php include './inc/navbar.php' ; ?>
 <div class="container">
@@ -55,15 +53,15 @@ $checked_arr = explode(',', $category_list);
         <a href="./admin_category.php">管理分類</a>
     </header>
 
-    <div class="admin__articles col-md-4 col-md-8 mx-auto p-4 mb-5">
+    <div class="box_shadow col-md-4 col-md-8 mx-auto p-4 mb-5">
         <form method="POST" action="./handle_update.php">
             <div class="form-group">
                 <label for="title">文章標題：</label>
-                <input type="text" class="form-control" name="title" id="title" value="<?php echo $row['title']; ?>" />
+                <input type="text" class="form-control" name="title" id="title" value="<?php echo $title ?>" />
             </div>
             <div class="form-group">
                 <label for="content">文章內容：</label>
-                <textarea class="form-control" id="content" name="content" rows="8"><?php echo $row['content']; ?></textarea>
+                <textarea class="form-control" id="content" name="content" rows="8"><?php echo $content ?></textarea>
             </div>
             <div class="form-group">文章分類：
                 <?php
@@ -93,13 +91,14 @@ $checked_arr = explode(',', $category_list);
 
                         foreach ($cat_option_arr as $id => $name) {
                             $checked = '';
+                            $category_name = escape($name);
                             if(in_array($id, $checked_arr)) {
                                 $checked = "checked";
                             }
                             print "
                             <div class='form-check'>
                                 <input name='category_id[]' class='form-check-input' type='checkbox' value='$id' id='check_$id' $checked/>
-                                <label class='form-check-label' for='check_$id'>$name</label>
+                                <label class='form-check-label' for='check_$id'>$category_name</label>
                             </div>";
                         }
 
@@ -158,9 +157,7 @@ $checked_arr = explode(',', $category_list);
             </div>
         </form>
     </div>
-
-
-
+    <!--  -->
     <footer class="blog__footer text-center m-3">
         <p>Copyright © 2019 - enter3017sky</p>
     </footer>

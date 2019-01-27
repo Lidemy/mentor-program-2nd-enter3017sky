@@ -2,10 +2,27 @@
 
 require './inc/conn.php';
 require_once './inc/utils.php';
+require_once './check_login.php';
+
+/** 防止惡意行為，沒有登入不能用。 */
+checkLoginAndPrintMsg($user, '你沒有登入齁！');
+
+/** 防止惡意行為，沒有登入不能用。 */
+// if(!isset($user) && empty($user)) {
+//     $_POST['title'] = null;
+//     $_POST['content'] = null;
+//     $_POST['category_id'] = null;
+//     $_POST['draft'] = null;
+//     $_POST['name'] = null;
+//     printMessage('嘿嘿嘿，想幹嘛？', './index.php');
+// }
 
 
-$title = htmlspecialchars($_POST['title']);
-$content = htmlspecialchars($_POST['content']);
+// $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
+// $content = htmlspecialchars($_POST['content'], ENT_QUOTES);
+
+$title = $_POST['title'];
+$content = $_POST['content'];
 
 // checkbox 沒勾選的話，沒參數，以下兩種方法。
 $category_arr = @$_POST['category_id'];

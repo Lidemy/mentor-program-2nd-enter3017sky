@@ -1,3 +1,4 @@
+<?php require_once './check_login.php'; ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white position-fixed w-100">
     <a class="navbar-brand" href="#">Blog</a>
@@ -18,24 +19,27 @@
             <li class="nav-item">
                 <a class="nav-link" href="about.php">About</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="admin.php">#admin</a>
-            </li>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-                </a>
+<?php if(isset($user) && !empty($user)) { ?>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>Admin</strong></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="./admin.php">文章管理</a>
+                    <a class="dropdown-item" href="./admin_category.php">分類管理</a>
+                <div class="dropdown-divider"></div> <!-- 分隔線 -->
+                    <a class="dropdown-item" href="./add.php">新增文章</a>
+                    <a class="dropdown-item" href="./add_category.php">新增分類</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="./edit_about.php">編輯 About Me</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li> -->
+            <a class="btn btn-outline-secondary ml-2" href="./logout.php">Log out</a>
         </ul>
+<?php } else { ?>
+            <li class="nav-item">
+                <a class="nav-link" href="login.php">Log in</a>
+            </li>
+        </ul>
+<?php } ?>
         <form class="form-inline my-2 my-lg-0" method="GET" action="./handle_search.php">
             <input class="form-control mr-sm-2" type="search" placeholder="Search Blog..." aria-label="Search" name='q'>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

@@ -14,6 +14,8 @@ http://enter3017sky.tw/blog/index.php
     - 點擊分類可顯示相關的文章。
 
 - `article.php`: 文章。可以輸出 markdown 的格式。底下可以簡易的訪客留言。[PHP Markdown Parser 函式庫](https://blog.longwin.com.tw/2015/07/php-markdown-parser-library-class-2015/)。
+    - 新增功能：用 SESSION 存取訪客留言的暱稱，可以清除訪客暱稱。而 Blog 版主留言時顯示自己的暱稱。
+    - 新增功能：使用者登入時顯示編輯按鈕。
 
 - `about.php`: 關於我。
 
@@ -25,3 +27,5 @@ http://enter3017sky.tw/blog/index.php
          - `admin.php`: 管理文章。
          - `edit_about.php`: 編輯關於我。
 - `handle_search.php`: 搜尋文章。
+
+

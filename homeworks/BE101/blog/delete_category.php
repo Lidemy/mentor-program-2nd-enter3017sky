@@ -3,10 +3,14 @@
 // 引入連線資料庫的檔案
 require './inc/conn.php';
 
-// 未完成之前，先把刪除作廢
-require './inc/utils.php';
-printMessage('\n\n\n你已經刪除了你已經刪除了你已經刪除了...\n\n\n(模擬刪除)', './admin.php');
-exit;
+require_once './inc/utils.php';
+require_once './check_login.php';
+
+
+
+/** 防止惡意行為，沒有登入不能用。 */
+checkLoginAndPrintMsg($user);
+
 
 // GET 方法
 $id = $_GET['id'];
