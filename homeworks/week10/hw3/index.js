@@ -30,8 +30,8 @@ $(document).ready(function() {
 
         $('.todo_list').append(list.map(item =>`
             <li class="list-group-item d-flex justify-content-between align-items-center">${item.value}
+                <input type='hidden' id='${item.id}' />
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <input type='hidden' id='${item.id}' />
                     <button type="button" class="btn btn-outline-success done">完成</button>
                     <button type="button" class="btn btn-outline-danger delete">刪除</button>
                 </div>
@@ -71,7 +71,7 @@ $(document).ready(function() {
             //     $(this).remove();
             // })
 
-            let id = Number(el.parent().find('input:hidden').attr("id"))
+            let id = Number(el.parent().parent().find('input:hidden').attr("id"))
             removeTodo(id)
 
         } else if (el.hasClass('done')){

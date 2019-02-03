@@ -39,7 +39,7 @@ var Stack = function() {
 }
 
 
-// 以下的方式會
+
 
 var Queue = function() {
     if(!(this instanceof Queue)){
@@ -117,45 +117,28 @@ function Data() {
 
 
 
-var s1 = new Stack()
-var s2 = new Stack()
-console.log('s1.size === s2.size: ', s1.size === s2.size)
+// var s1 = new Stack()
+// var s2 = new Stack()
+// console.log('s1.size === s2.size: ', s1.size === s2.size)
 
 
 
-var q1 = new Queue()
-var q2 = new Queue()
-// 會耗費很多記憶體
-console.log('q1.size === q2.size:', q1.size === q2.size)
+// var q1 = new Queue()
+// var q2 = new Queue()
+// // 會耗費很多記憶體
+// console.log('q1.size === q2.size:', q1.size === q2.size)
+
+// console.log(s1.push)
+// console.log(q1.push)
 
 
-console.log(s1.push)
-console.log(q1.push)
+// var data = Data()
+// var data2 = Data()
 
+// data.push(1)
+// data.push(2)
+// data.push(3)
+// data.pop()
 
-var data = Data()
-var data2 = Data()
-
-data.push(1)
-data.push(2)
-data.push(3)
-data.pop()
-
-// console.log(data.size())
-// console.log(data2.size())
-console.log(data.push)
-console.log('data.push === data2.push: ', data.push === data2.push)
-
-
-// var b = Dog('123')
-// var d = Dog('456')
-// b.sayHello()
-
-// console.log(b.sayHello)
-// console.log(b.sayHello === d.sayHello)
-
-
-
-class Stack {
-    this.push = 
-}
+// console.log(data.push)
+// console.log('data.push === data2.push: ', data.push === data2.push)
