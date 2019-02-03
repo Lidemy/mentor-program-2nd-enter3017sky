@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do List - week7-hw2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> -->
+    <style>
+        body {
+            background: #f0f5f9;
+        }
+        .container {
+            margin-top: 4rem;
+        }
+        .col {
+            margin: 0 auto;
+            max-width: 500px;
+            border: 1px solid gray;
+            box-shadow: 3px 5px 10px 1px rgba(0, 0, 0, 0.3);
+            position: relative;
+            
+        }
+        .p1 {
+            position: absolute;
+            z-index: -1;
+            bottom: -5px;
+            left: 6px;
+            max-width: 488px;
+            /* margin: 0 auto; */
+        }
+        .p2 {
+            position: absolute;
+            z-index: -2;
+            bottom: -9px;
+            left: 11px;
+            max-width: 478px;
+        }
+        .success {
+            color: #155724;
+            background-color: #d4edda;
+        }
+        .info {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    <script src="./index.bundle.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col card card-body">
+                <div class="col card card-body p1"></div>
+                <div class="col card card-body p2"></div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control add-todo" placeholder="新增代辦事項">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary addBtn" type="button">Add New To-Do</button>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush todo_list">
+
+
+                    <!--  -->
+                    <li class="list-group-item d-flex justify-content-between align-items-center">練習 PHP
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center success">
+                        寫 Homework
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-primary done todo__undone">未完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">練習 JavaScript
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-success done">完成</button>
+                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
+                        </div>
+                    </li>
+                    <!--  -->
+                </ul>
+            </div>
+
+        </div>
+        <footer class="info">enter3017sky week10-hw2</footer>
+    </div>
+</body>
+</html>
