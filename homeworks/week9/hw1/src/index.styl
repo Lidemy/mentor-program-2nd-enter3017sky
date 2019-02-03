@@ -1,0 +1,199 @@
+/** stylus 練習 */
+
+body
+    padding 0
+    margin 0
+    background-image url(https://lolstatic-a.akamaihd.net/lolkit/1.1.6/resources/images/bg-default.jpg)
+    background-repeat no-repeat
+    background-size cover
+    background-attachment fixed
+    background-position center
+
+/** 
+container 
+    header
+        navbar
+            bar__brand
+            menu
+    header__title
+    wrapper
+        rows
+            col
+                preview
+                bottom
+                    bottom__avatar
+                    bottom__intro
+                        owner__name
+                        channel__name
+                        viewers
+*/
+
+.conta
+    background rgba(0, 0, 0, 0.3)
+    min-height 100vh
+
+.wrapper
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+
+.navbar
+    a
+        color white
+
+.navbar
+    width: 100%;
+    background rgba(0, 0, 0, 0.4)
+    display flex
+    position fixed
+    top 0
+    justify-content space-between
+    align-items center
+    color white
+    z-index: 1;
+
+    .menu /*直接對 ul 使用 flex 會變成 row 的方向*/
+        display: flex;
+        list-style: none;
+
+    > .bar__brand
+        display: flex;
+        /* align-items: center; */
+
+.bar__left 
+    padding-left: 15px;
+
+.bar__right 
+    padding-right: 15px;
+    > span
+        background: white;
+        margin-left: 2px;
+        padding: 0 2px;
+        color: black;
+
+.rows
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+li + li {
+    padding-left: 35px;
+}
+
+.header__title
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 70px;
+    h1
+        margin: 0;
+        font-size: 60px;
+        font-weight: 700;
+        font-family: cursive;
+        color: aquamarine;
+    h2
+        margin: 0;
+        font-size: 20px;
+        font-weight: 350;
+        font-family: cursive;
+        color: aqua;
+
+
+.col
+    width: 260px;
+    height: auto;
+    border: 4px solid rgba(120, 120, 120, 0.3);
+    padding: 2px;
+    transition: all 0.2s ease-in;
+    &:hover 
+        cursor: pointer;
+        filter: brightness(1.2);
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.7);
+        background: rgba(20, 20, 20, 0.9);
+        position: relative;
+        transform: scale(1.1);
+        opacity: 1;
+        z-index: 1;
+
+.preview
+    display: flex;
+    justify-content: center;
+    position: relative;
+    & img
+        // max-width: 240px;
+        // max-height: 135px;
+        display: block;
+        width: 100%;
+        // width: auto;
+        height: 100%;
+
+
+
+.viewers { /* 觀看人數 */
+    background: rgba(50, 50, 50, 0.5);
+    color: rgb(154, 154, 154);
+    display: flex;
+    width: 97%;
+    height: 18px;
+    position: absolute;
+    bottom: 1px;
+    left: 3px;
+    font-size: small;
+    text-decoration: none;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+
+.bottom
+    display: flex;
+    height: 70px;
+    margin-top: 1px;
+    & .bottom__intro
+        position: relative;
+        width: 170px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        opacity: 0.7;
+
+.bottom__avatar
+    width: 70px;
+    height: 70px;
+    img 
+        max-width: 70px;
+        height: 70px;
+    
+
+.channel__name
+    margin-left: 10px;
+    font-size: 12px;
+    color: rgb(162, 162, 162);
+    align-items: flex-start;
+
+.owner__name
+    /* 處理文字過長顯示 ... */
+    margin: 5px 0 5px 5px ;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+a /* 消除超連結底線 */
+    text-decoration: none;
+
+.fill
+    padding: 1rem;
+
+.footer 
+    color: aliceblue;
+    font-family: cursive;
+    text-align: center;
+    margin: 30px 0;
+
+
+@media screen and (max-width: 605px)
+    .col
+        min-width 80vw
+
+
