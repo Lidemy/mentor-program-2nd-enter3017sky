@@ -29,7 +29,6 @@
             bottom: -5px;
             left: 6px;
             max-width: 488px;
-            /* margin: 0 auto; */
         }
         .p2 {
             position: absolute;
@@ -49,6 +48,12 @@
             width: 100%;
             text-align: center;
         }
+        .btn-group {
+            padding: 5px 0;
+            margin-bottom: 5px;
+            align-items: baseline;
+            /* text-emphasis: center; */
+        }
     </style>
     <script src="./index.bundle.js"></script>
 </head>
@@ -58,33 +63,20 @@
             <div class="col card card-body">
                 <div class="col card card-body p1"></div>
                 <div class="col card card-body p2"></div>
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <input type="text" class="form-control add-todo" placeholder="新增代辦事項">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary addBtn" type="button">Add New To-Do</button>
                     </div>
                 </div>
+                <div class="btn-group btn_group">
+                    <button class="btn btn-outline-success btn-block done" type="button">全部</button>
+                    <button class="btn btn-outline-primary btn-block undone" type="button">未完成</button>
+                    <button class="btn btn-outline-danger btn-block clear" type="button">清空</button>
+                </div>
                 <ul class="list-group list-group-flush todo_list">
-                    <!--  -->
-                    <li class="list-group-item d-flex justify-content-between align-items-center">練習 PHP
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-success done">完成</button>
-                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center success">
-                        寫 Homework
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-primary done todo__undone">未完成</button>
-                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">練習 JavaScript
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-outline-success done">完成</button>
-                            <button type="button" class="btn btn-outline-danger delete">刪除</button>
-                        </div>
-                    </li>
+                    <!-- 插入的地方 -->
+
                     <!--  -->
                 </ul>
             </div>
