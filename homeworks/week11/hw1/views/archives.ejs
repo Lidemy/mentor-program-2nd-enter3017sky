@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<%- include("bootstrap"); %>
+    <!--
+        <?php 
+            $web_title = 'Archive « enter3017sky Blog';
+            include_once './inc/head.php'; 
+        ?>
+    -->
+<body>
+<%- include('navbar'); %>
+<div class="container">
+    <header class="jumbotron text-center bg-white">
+
+        <%- `<h1>${title}</h1>` %>
+
+    </header>
+
+    <% if(user) { %>
+        <button type='button' class='badge btn-outline-secondary mr-1'>
+            <%= user %> 登入中
+        </button>
+    <% } %>
+
+    <div class="box_shadow col-sm-10 col-md-10 mx-auto p-3">
+        <ul class="list-group list-group-flush">
+
+
+        <% for(var i = 0; i < posts.length; i++) { %>
+            <a href='./posts/<%= posts[i].id %>' class='list-group-item list-group-item-action'>
+                <div class='d-flex flex-row'>
+                    <time class='datetime mr-3'>$date</time>
+                    <h3 class='truncate'><%= posts[i].title %></h3>
+                </div>
+            </a>
+        <% } %>
+
+        <!--
+
+            <?php
+
+                $sql = "SELECT * FROM articles WHERE draft=0 ORDER BY created_at DESC";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0) {
+                    while($row = $stmt->fetch()) {
+                        // 顯示時間
+                        $created_at = new DateTime($row['created_at']);
+                        $year = $created_at->format('l, M d Y');
+                        $date = $created_at->format('M d');
+
+                        $title = escape($row['title']);
+                        $id = $row['id'];
+
+                        print "
+                            <a href='./article.php?id=$id' class='list-group-item list-group-item-action'>
+                                <div class='d-flex flex-row'>
+                                    <time class='datetime mr-3'>$date</time>
+                                    <h3 class='truncate'>$title</h3>
+                                </div>
+                            </a>";
+                    }
+                }
+            ?>
+
+            -->
+        </ul>
+    </div>
+    <footer class="blog__footer text-center m-3 mt-5">
+        <p>Copyright © 2019 - enter3017sky</p>
+    </footer>
+</div>
+<!--  -->
+</body>
+</html>
