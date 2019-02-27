@@ -29,7 +29,5 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         tableName: 'blog_user',
-        timestamps: false,
-        createdAt: 'created_at'
     });
 };

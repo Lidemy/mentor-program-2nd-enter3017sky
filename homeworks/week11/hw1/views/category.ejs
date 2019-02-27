@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 
-<%- include('head', { title: 'Archive « enter3017sky Blog' }); %>
+<%- include('head', { title: `${title} « enter3017sky Blog`}); %>
 
 <body>
-
 <%- include('navbar') %>
-
 <div class="container">
     <header class="jumbotron text-center bg-white">
 
-        <%- `<h1>${title}</h1>` %>
+        <%- `<h2>Categories: <button type='button' class='btn btn-outline-secondary btn-sm mr-1'>${title}</button></h2>` %>
 
         <% if(user) { %>
             <button type='button' class='badge btn-outline-secondary mr-1'>
@@ -22,18 +20,16 @@
     <div class="box_shadow col-sm-10 col-md-10 mx-auto p-3">
         <ul class="list-group list-group-flush">
 
-        <!-- 顯示文章列表 -->
-        <% for(var i = 0; i < posts.length; i++) { %>
+        <% for(let i = 0, max = posts.length; i < max; i++) { %>
 
-        <a href='./posts/<%= posts[i].id %>' class='list-group-item list-group-item-action'>
-            <div class='d-flex flex-row'>
-                <time class='datetime mr-3'><%= posts[i].created_at %></time>
-                <h3 class='truncate'><%= posts[i].title %></h3>
-            </div>
-        </a>
+            <a href='../posts/<%= posts[i].id %>' class='list-group-item list-group-item-action'>
+                <div class='d-flex flex-row'>
+                    <time class='datetime mr-3'><%= posts[i].created_at %></time>
+                    <h4 class='truncate'><%= posts[i].title %></h4>
+                </div>
+            </a>
 
         <% } %>
-
         </ul>
     </div>
 

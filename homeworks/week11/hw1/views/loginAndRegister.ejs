@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-<%- include("bootstrap"); %>
-    <!--
-        <?php 
-            $web_title = 'Login & Register « enter3017sky Blog';
-            include_once './inc/head.php'; 
-        ?>
-    -->
+
+<%- include('head', { title: 'Login & Register « enter3017sky Blog' }); %>
+
 <body>
 
 <%- include('navbar'); %>
@@ -14,20 +10,25 @@
     <div class="container">
     <header class="jumbotron text-center bg-white">
 
-        <%- `<h1>${title}</h1>` %>
-
-        <%= `user:${user}` %>
-        
-        <% if(user) {%>
-            <button type='button' class='badge btn-outline-secondary mr-1'>
-                <%= user %> 登入中
-            </button>
-
-        <% } %>
+    <%- `<h1>${title}</h1>` %>
+    <% if(user) {%>
+        <button type='button' class='badge btn-outline-secondary mr-1'>
+            <%= user %> 登入中
+        </button>
+    <% } %>
 
     </header>
         <div class="form_wrap">
-            <form class="card w-75 p-4 m-3 mx-auto box_shadow" method="POST" action="/handle-register">
+            <form class="card w-75 p-4 m-3 mx-auto box_shadow" method="POST" action="/handle-login">
+
+            <!--
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>提示：</strong>未開放註冊！
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+            -->
                 <h3>Login</h3>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -48,7 +49,7 @@
             <!--  -->
             <form class="card w-75 p-4 m-3 mx-auto box_shadow" method="POST" action="/handle-register">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>提示：</strong>未開放註冊！
+                    <strong>提示：</strong>未開放註冊！
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -75,6 +76,9 @@
             <div class='mt-5'></div>
             <!--  -->
         </div>
+
+        <%- include('footer', { footerText: 'Copyright © 2019 - enter3017sky' })%>
+        
     </div>
 </body>
 </html>

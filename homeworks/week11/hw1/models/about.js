@@ -17,16 +17,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     created_at: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     },
     update_time: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
-    tableName: 'about'
+    tableName: 'about',
+    timestamps: false,
+    createdAt: 'created_at'
+    
   });
 };

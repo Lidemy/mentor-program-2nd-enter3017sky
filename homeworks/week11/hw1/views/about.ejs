@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 
-<%- include("bootstrap"); %>
+<%- include('head', { title: 'About Me « enter3017sky Blog' }); %>
 
 <body>
 <div class="container-fluid">
@@ -9,20 +9,23 @@
 <%- include('navbar'); %>
 
 <header class="jumbotron text-center bg-white">
+
     <%- `<h1>${title}</h1>` %>
+
 </header>
 <div class="post__container">
     <article class="card-body col-md-7 mx-auto">
-        <!-- <h2><a>About Me</a></h2> -->
         <div class="content">
             <p class="about__text">
-               
+
+               <%- aboutTextInfo %>
+
             </p>
         </div>
     </div>
-<footer class="blog__footer text-center m-3">
-    <p>Copyright © 2019 - enter3017sky</p>
-</footer>
+
+    <%- include('footer', { footerText: 'Copyright © 2019 - enter3017sky' })%>
+
 </div>
 </body>
 </html>

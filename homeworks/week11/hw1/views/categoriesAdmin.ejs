@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 
-<%- include('head', { title: 'Categories « enter3017sky Blog' }); %>
+<%- include('head', { title: '分類管理 « enter3017sky Blog' }); %>
 
 <body>
-
 <%- include('navbar') %>
-
 <div class="container">
     <header class="jumbotron text-center bg-white">
 
         <%- `<h1>${title}</h1>` %>
-
         <% if(user) { %>
+
             <button type='button' class='badge btn-outline-secondary mr-1'>
                 <%= user %> 登入中
             </button>
+
         <% } %>
 
     </header>
@@ -23,14 +22,18 @@
     <div class="box_shadow col-sm-10 col-md-10 mx-auto p-3">
         <ul class="list-group list-group-flush">
 
-                <!-- 顯示每個分類及數量 -->
+            <!-- 顯示每個分類及數量 -->
             <% for(let i = 0; i < tags.length; i++) { %>
 
-            <a href="/categories/<%= tags[i]['name'] %>" class='list-group-item list-group-item-action d-flex justify-content-between'>
-                <h3 class='truncate'><%= tags[i].name %></h3>
-                <input type="hidden" name="category_id" value="<%= tags[i]['category_id'] %>">
-                <button class='btn btn-secondary' disabled><%= tags[i]['count(t.category_id)'] %></button>
-            </a>
+            <li class='list-group-item list-group-item-action d-flex justify-content-between'>
+                <div class='truncate'>
+                    <h3><%= tags[i].name %></h3>
+                </div>
+                <div>
+                    <a href='/category/<%= tags[i].id %>/edit' class='btn btn-outline-secondary'>編輯</a>
+                    <a href='/category/<%= tags[i].id %>/delete' class='btn btn-outline-secondary'>刪除</a>
+                </div>
+            </li>
 
             <% } %>
 

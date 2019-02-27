@@ -26,6 +26,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'enter3017sky_comments'
+    tableName: 'enter3017sky_comments',
   });
 };

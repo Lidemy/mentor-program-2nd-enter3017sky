@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%- include("bootstrap"); %>
+
+<%- include('head'); %>
+
 <!--
-    <link rel="stylesheet" type="text/css" href="main.css">
-        highlight code - tomorrow_night 
     <link rel="stylesheet" href="./inc/prism-tomorrow_night/prism.css">
 -->
 </head>
@@ -16,68 +16,37 @@
 
         <%- `<h1>${title}</h1>` %>
 
+        <% if(user) { %>
+            <button type='button' class='badge btn-outline-secondary mr-1'>
+                <%= user %> 登入中
+            </button>
+        <% } %>
+
     </header>
 
-    <% if(user) { %>
-        <button type='button' class='badge btn-outline-secondary mr-1'>
-            <%= user %> 登入中
-        </button>
-    <% } %>
-    <!--
+        <!-- 顯示文章 -->
+        <% for(var i = 0; i < posts.length; i++) { %>
+            <div class='post__container'>
+                <article class='card-body col-md-7 mx-auto'>
+                    <div class='mb-3'><span class='post__time'><%= posts[i].created_at %></span></div>
+                    <div class='post__title'>
+                        <h2><a href='/posts/<%=posts[i].id%>' class='text-dark post__link'><%= posts[i].title %></a></h2>
+                    </div>
+                    <div class='post__content'><%- posts[i].content %></div>
+                    <footer class='mt-4'>
+                        <p>
+                            <a href="/posts/<%=posts[i].id%>" class='more__link'>
+                                READ MORE
+                            </a>
+                        </p>
+                    </footer>
+                </article>
+            </div>
+        <% } %>
 
+    
+    <%- include('footer', { footerText: 'Copyright © 2019 - enter3017sky' })%>
 
-        // 把 articles 這個 table 的內容都撈出來，DESC 降冪排序，
-        $sql = "SELECT * FROM articles WHERE draft=0 ORDER BY created_at DESC";
-
-        // $result = $pdo->query($sql);
-        // if($result->rowCount() > 0) {
-
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-
-        if($stmt->rowCount() > 0) {
-            while($row = $stmt->fetch()) {
-                $id = $row['id'];
-                $created_at = new DateTime($row['created_at']);
-                $time = $created_at->format('l, M d Y');
-                $title = escape($row['title']);
-
-                $md = new Parsedown(); // 文字轉成 markdown 格式
-                $md->setSafeMode(true); // 使用 Parsedown() 的安全模式來跳脫
-
-                $content = $row['content'];
-                // $content = escape($row['content']);
-                // $content_part = substr($content, 0, 400); // 中文會亂碼
-                $content_part = mb_substr($content, 0, 200, 'UTF-8'); // 從第1個字元開始擷取到200個字元
-                $text = $md->text($content_part);
-                print"
- -->
-
-                    <% for(var i = 0; i < posts.length; i++) { %>
-
-                        <div class='post__container'>
-                            <article class='card-body col-md-7 mx-auto'>
-                                <div class='mb-3'><span class='post__time'><%= posts[i].created_at %></span></div>
-                                <div class='post__title'>
-                                    <h2><a href='./article.php?id=$id' class='text-dark post__link'><%= posts[i].title %></a></h2>
-                                </div>
-                                <div class='post__content'><%= posts[i].content %></div>
-                                
-                                <footer class='mt-4'>
-                                    <p>
-                                        <a href="/article/<%=posts[i].id%>" class='more__link'>
-                                            READ MORE
-                                        </a>
-                                    </p>
-                                </footer>
-                            </article>
-                        </div>
-                        
-                    <% } %>
-    <!--  -->
-    <footer class="blog__footer text-center m-3">
-        <p>Copyright © 2019 - enter3017sky</p>
-    </footer>
 </div>
 <!-- High Light 
 // <script src="./inc/prism-tomorrow_night/prism.js"></script>
