@@ -1411,3 +1411,171 @@ POST 內文最常見的媒體類型是 _application/x-www-form-urlcoded_，這�
 
 
 我用 Node.js Express 重做之前的 Blog ，我的問題是，假設我要編輯文章的話，要從資料庫撈已選的分類，然後在 checkbox 再把填過的直塞回去 input (checked)，之前的 PHP 我
+
+
+
+
+### AWS EC2 運行
+
+參考文章 [Node.js 佈建處理 (3)](https://leoyeh.me/2014/11/06/Node-js-%E4%BD%88%E5%BB%BA%E8%99%95%E7%90%86-3/)
+
+- 上傳 EC2 之後，很開心的下載運行 pm2，然後才發現我不知道去哪找我的網頁，後來才發覺真是搞笑欸，就跟 local 一樣啊
+
+- _127.0.0.1_:3000/
+
+- *you_ip_or_DNS_name*:3000/
+
+- npm install 安裝依賴
+
+- 最簡單的檢驗方法 `node app.js`
+
+- 查看 `your_domin_name:3000`
+
+
+
+### nginx
+
+- `sudo apt install nginx` 安裝 nginx
+
+- `sudo vim nginx.conf` 查看設定
+
+- `sudo service nginx start`
+
+- `sudo service nginx status`
+
+
+
+
+http://www.hankcs.com/appos/linux/fix-nginx-bind-err.html
+解决方案是编辑nginx的配置文件
+hankcs@ubuntu:~$ sudo gedit /etc/nginx/sites-available/default
+修改这一段：
+```js
+listen 80;
+listen [::]:80 default_server;
+为
+```
+```js
+listen 80;
+listen [::]:80 ipv6only=on default_server;
+```
+
+nginx -v
+nginx version: nginx/1.14.0 (Ubuntu)
+
+重新啟動
+sudo service nginx restart
+
+查看狀態
+sudo systemctl status nginx.service
+
+查看錯誤訊息
+sudo vim /var/log/nginx/error.log
+
+/var/log/nginx
+/var/log/nginx/access.log
+/var/log/nginx/error.log
+
+預設值
+sudo vim /etc/nginx/sites-enabled/default
+
+
+[](https://ithelp.ithome.com.tw/articles/10161733)
+查詢目前系統版本資訊
+指令：uname -a
+指令：lsb_release -a
+
+修改hostname
+vim etc/hostname
+
+---
+
+### Remove nginx
+
+[卸載 - 如何在Ubuntu 18.04上停止Apache2？](https://askubuntu.com/questions/1074035/how-can-i-stop-apache2-on-ubuntu-18-04)
+
+---
+
+### Install nginx
+
+[How To Install Nginx on Ubuntu 18.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04)
+
+1. 更新 安裝
+sudo apt update
+sudo apt install nginx
+
+2. 調整防火牆
+sudo ufw app list
+
+3. sudo ufw allow 'Nginx HTTP'
+sudo ufw status
+
+4.
+systemctl status nginx
+
+
+
+
+---
+
+nginx: [alert] could not open error log file: open() "/var/log/nginx/error.log" failed (13: Permission denied)
+
+2019/02/27 23:54:30 [warn] 23551#23551: 
+
+the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
+
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+2019/02/27 23:54:30 
+
+[emerg] 23551#23551: open() "/run/nginx.pid" failed (13: Permission denied)
+nginx: configuration file /etc/nginx/nginx.conf test failed
+
+
+sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+
+
+
+
+Restarting nginx: [alert]: could not open error log file: open() "/var/log/nginx/error.log" failed (13: Permission denied)
+2011/02/16 17:20:58 [warn] 23925#0: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
+the configuration file /etc/nginx/nginx.conf syntax is ok
+2011/02/16 17:20:58 [emerg] 23925#0: open() "/var/run/nginx.pid" failed (13: Permission denied)
+
+https://serverfault.com/questions/236492/nginx-restart-issues
+
+或者，您可以更改nginx.log文件權限，以便它們與您用於啟動nginx的當前用戶匹配：
+
+chown your_user /var/log/nginx/error.log
+我建議你把這個permisions添加到整個nginx日誌目錄
+
+chown -R your_user /var/log/nginx/
+
+
+
+
+
+ubuntu@ip-172-31-43-98:/etc$ sudo service nginx restart
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+ubuntu@ip-172-31-43-98:/etc$ sudo systemctl status nginx.service
+● nginx.service - A high performance web server and a reverse proxy server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+   Active: failed (Result: exit-code) since Thu 2019-02-28 01:40:26 CST; 7s ago
+     Docs: man:nginx(8)
+  Process: 21542 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, status=1/FAILURE)
+  Process: 24316 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=1/FAILURE)
+  Process: 25267 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=1/FAILURE)
+ Main PID: 20654 (code=exited, status=0/SUCCESS)
+
+Feb 28 01:40:26 ip-172-31-43-98 systemd[1]: Starting A high performance web server and a reverse proxy server...
+Feb 28 01:40:26 ip-172-31-43-98 systemd[1]: nginx.service: Control process exited, code=exited status=1
+Feb 28 01:40:26 ip-172-31-43-98 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Feb 28 01:40:26 ip-172-31-43-98 systemd[1]: Failed to start A high performance web server and a reverse proxy server.
+ubuntu@ip-172-31-43-98:/etc$
+
+
+
+

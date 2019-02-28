@@ -17,8 +17,8 @@ const About = require('./about');
 
 
 // 連線資料庫
-const sequelize = new Sequelize('enter3017sky_db', 'enter3017sky', configure.password, {
-    host: 'enter3017sky.tw',
+const sequelize = new Sequelize(configure.dbname, configure.username, configure.password, {
+    host: configure.host,
     dialect: 'mysql',
     operatorsAliases: false,
     // logging: false,

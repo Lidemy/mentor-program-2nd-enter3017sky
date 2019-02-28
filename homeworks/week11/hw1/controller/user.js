@@ -321,7 +321,7 @@ module.exports = {
                 type: sequelize.QueryTypes.SELECT
             }).then(categories => {
 
-                console.log('單篇文章的分類選項：', categories)
+                // console.log('單篇文章的分類選項：', categories)
 
                 commentsQuery = "SELECT * FROM comments WHERE article_id = ?";
 
